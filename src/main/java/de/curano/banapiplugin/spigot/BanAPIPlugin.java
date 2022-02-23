@@ -1,21 +1,32 @@
-package de.curano.banapiplugin;
+package de.curano.banapiplugin.spigot;
 
-import de.curano.banapiplugin.listener.JoinListener;
+import de.curano.banapiplugin.spigot.listener.JoinListener;
 import de.curano.banapiplugin.utils.BanAPI;
+import de.curano.banapiplugin.spigot.data.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BanAPIPlugin extends JavaPlugin {
 
+    private static BanAPIPlugin instance;
+
+    public static BanAPIPlugin instance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
+
+        instance = this;
+
+        Config.load();
 
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (BanAPI.isBanned(player.getUniqueId())) {
+                if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
                     player.kickPlayer("BanAPI Ban");
                 }
             }
