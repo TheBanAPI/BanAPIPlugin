@@ -1,0 +1,7 @@
+name: BanAPIPlugin
+version: 1.0
+author: TheCurano
+
+main: de.curano.banapiplugin.BanAPIPlugin
+
+commands:
