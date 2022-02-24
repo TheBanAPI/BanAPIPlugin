@@ -22,7 +22,7 @@ public class BanAPIPlugin extends JavaPlugin {
         instance = this;
 
         Config.load();
-        
+
         getCommand("banapi").setExecutor(new BanAPICommand());
 
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);

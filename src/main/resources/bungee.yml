@@ -1,0 +1,9 @@
+name: BanAPIPlugin
+version: 1.0
+author: TheCurano
+
+main: de.curano.banapiplugin.bungee.BanAPIPlugin
+
+commands:
+  banapi:
+    description: BanAPI Command
