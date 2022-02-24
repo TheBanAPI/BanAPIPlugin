@@ -16,13 +16,13 @@ public class BanAPICommand implements CommandExecutor {
         if (args.length == 1 && sender.hasPermission("banapi.command.use")) {
             switch (args[0].toLowerCase(Locale.ROOT)) {
                 case "on":
-                    de.curano.banapiplugin.bungee.data.Config.config.set("enabled", true);
-                    de.curano.banapiplugin.bungee.data.Config.save();
+                    Config.config.set("enabled", true);
+                    Config.save();
                     sender.sendMessage(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     return true;
                 case "off":
-                    de.curano.banapiplugin.bungee.data.Config.config.set("enabled", false);
-                    de.curano.banapiplugin.bungee.data.Config.save();
+                    Config.config.set("enabled", false);
+                    Config.save();
                     sender.sendMessage(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     return true;
             }
