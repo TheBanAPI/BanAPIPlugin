@@ -31,7 +31,7 @@ public class BanAPIPlugin extends Plugin {
 
         this.getProxy().getScheduler().schedule(this, () -> {
             for (ProxiedPlayer player : this.getProxy().getPlayers()) {
-                if (de.curano.banapiplugin.spigot.data.Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
+                if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
                     player.disconnect(new TextComponent("BanAPI Ban"));
                 }
             }

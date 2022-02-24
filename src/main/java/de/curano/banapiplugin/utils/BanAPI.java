@@ -11,6 +11,10 @@ import java.util.UUID;
 public class BanAPI {
 
     public static boolean isBanned(String uuid) {
+        if (uuid == null) {
+            return false;
+        }
+
         String url = "https://ban-api.thecurano.dev:8080/state?uuid=" + uuid;
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
@@ -29,6 +33,10 @@ public class BanAPI {
     }
 
     public static boolean isBanned(UUID uuid) {
+        if (uuid == null) {
+            return false;
+        }
+
         return isBanned(uuid.toString());
     }
 

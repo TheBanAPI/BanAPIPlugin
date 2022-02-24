@@ -17,6 +17,7 @@ public class Config {
     public static void load() {
         File configFile = new File(BanAPIPlugin.instance().getDataFolder(), "config.yml");
         if (!configFile.exists()) {
+            configFile.getParentFile().mkdirs();
             try (InputStream in = BanAPIPlugin.instance().getResourceAsStream("config.yml")) {
                 Files.copy(in, configFile.toPath());
             } catch (IOException e) {
