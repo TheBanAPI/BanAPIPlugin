@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.curano'
-version '1.0'
+version 'Beta-1.0'
 
 compileJava {
     options.encoding = 'UTF-8'
