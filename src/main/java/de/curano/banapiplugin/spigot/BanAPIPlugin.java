@@ -1,5 +1,6 @@
 package de.curano.banapiplugin.spigot;
 
+import de.curano.banapiplugin.spigot.commands.BanAPICommand;
 import de.curano.banapiplugin.spigot.listener.JoinListener;
 import de.curano.banapiplugin.utils.BanAPI;
 import de.curano.banapiplugin.spigot.data.Config;
@@ -21,6 +22,8 @@ public class BanAPIPlugin extends JavaPlugin {
         instance = this;
 
         Config.load();
+        
+        getCommand("banapi").setExecutor(new BanAPICommand());
 
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 

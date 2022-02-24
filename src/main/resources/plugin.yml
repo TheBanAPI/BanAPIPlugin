@@ -5,3 +5,5 @@ author: TheCurano
 main: de.curano.banapiplugin.spigot.BanAPIPlugin
 
 commands:
+  banapi:
+    description: BanAPI Command
