@@ -6,11 +6,28 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.util.Locale;
+
 public class BanAPICommand implements CommandExecutor {
 
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
+        if (args.length == 1 && sender.hasPermission("banapi.command.use")) {
+            switch (args[0].toLowerCase(Locale.ROOT)) {
+                case "on":
+                    de.curano.banapiplugin.bungee.data.Config.config.set("enabled", true);
+                    de.curano.banapiplugin.bungee.data.Config.save();
+                    sender.sendMessage(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                    return true;
+                case "off":
+                    de.curano.banapiplugin.bungee.data.Config.config.set("enabled", false);
+                    de.curano.banapiplugin.bungee.data.Config.save();
+                    sender.sendMessage(net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                    return true;
+            }
+        }
+
         if (Config.config.getBoolean("enabled", true)) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
         } else {
