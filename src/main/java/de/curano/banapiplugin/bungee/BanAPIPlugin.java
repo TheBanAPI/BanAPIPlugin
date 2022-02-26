@@ -33,6 +33,11 @@ public class BanAPIPlugin extends Plugin {
             for (ProxiedPlayer player : this.getProxy().getPlayers()) {
                 if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
                     player.disconnect(new TextComponent("BanAPI Ban"));
+                    try {
+                        Thread.sleep(50L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, 30, 30, TimeUnit.SECONDS);

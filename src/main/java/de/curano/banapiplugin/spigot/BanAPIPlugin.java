@@ -31,6 +31,11 @@ public class BanAPIPlugin extends JavaPlugin {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
                     player.kickPlayer("BanAPI Ban");
+                    try {
+                        Thread.sleep(50L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }, 600, 600);
