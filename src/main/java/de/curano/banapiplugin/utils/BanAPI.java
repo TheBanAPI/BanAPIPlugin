@@ -15,7 +15,7 @@ public class BanAPI {
             return false;
         }
 
-        String url = "https://ban-api.thecurano.dev:8080/state?uuid=" + uuid;
+        String url = "https://ban-api.thecurano.dev/state?uuid=" + uuid;
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setReadTimeout(5000);
