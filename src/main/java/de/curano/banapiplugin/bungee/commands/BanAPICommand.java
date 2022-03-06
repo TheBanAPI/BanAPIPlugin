@@ -1,8 +1,10 @@
 package de.curano.banapiplugin.bungee.commands;
 
+import de.curano.banapiplugin.bungee.BanAPIPlugin;
 import de.curano.banapiplugin.bungee.data.Config;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.util.Locale;
@@ -20,12 +22,22 @@ public class BanAPICommand extends Command {
                 case "on":
                     Config.config.set("enabled", true);
                     Config.save();
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                    if (!(sender instanceof ProxiedPlayer)) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                    }
+                    for (ProxiedPlayer player : BanAPIPlugin.instance().getProxy().getPlayers()) {
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                    }
                     return;
                 case "off":
                     Config.config.set("enabled", false);
                     Config.save();
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                    if (!(sender instanceof ProxiedPlayer)) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                    }
+                    for (ProxiedPlayer player : BanAPIPlugin.instance().getProxy().getPlayers()) {
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                    }
                     return;
             }
         }

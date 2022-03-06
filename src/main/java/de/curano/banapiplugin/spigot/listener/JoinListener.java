@@ -2,6 +2,7 @@ package de.curano.banapiplugin.spigot.listener;
 
 import de.curano.banapiplugin.utils.BanAPI;
 import de.curano.banapiplugin.spigot.data.Config;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -22,6 +23,10 @@ public class JoinListener implements Listener {
         if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(event.getPlayer().getUniqueId())) {
             event.setJoinMessage(null);
             event.getPlayer().kickPlayer("BanAPI Ban");
+        } else if (Config.config.getBoolean("enabled", true)) {
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
+        } else {
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
         }
     }
 
