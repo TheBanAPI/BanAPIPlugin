@@ -30,16 +30,18 @@ public class BanAPIPlugin extends Plugin {
         this.getProxy().getPluginManager().registerListener(this, new JoinListener());
 
         this.getProxy().getScheduler().schedule(this, () -> {
-            for (ProxiedPlayer player : this.getProxy().getPlayers()) {
-                if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
-                    player.disconnect(new TextComponent("BanAPI Ban"));
-                    try {
-                        Thread.sleep(50L);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+            this.getProxy().getScheduler().runAsync(this, () -> {
+                for (ProxiedPlayer player : this.getProxy().getPlayers()) {
+                    if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
+                        player.disconnect(new TextComponent("BanAPI Ban"));
+                        try {
+                            Thread.sleep(50L);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
+            });
         }, 30, 30, TimeUnit.SECONDS);
 
     }
