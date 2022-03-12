@@ -1,2 +1,8 @@
 # BanAPI Status
 enabled: true
+
+# Network Token
+token: null
+
+# IP Cache
+ipCache: false
