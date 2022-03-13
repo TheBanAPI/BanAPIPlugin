@@ -16,9 +16,9 @@ public class JoinListener implements Listener {
         if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(event.getPlayer().getUniqueId())) {
             event.getPlayer().disconnect(new TextComponent("\n&4%lBanAPI\n\n&cDu wurdest gebannt!\n\nDu kannst auf dem &eBanAPI-Discord &7einen Entbannungsantrag stellung!\n".replace("&", "§")));
         } else if (Config.config.getBoolean("enabled", true)) {
-            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
         } else {
-            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
+            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
         }
     }
 

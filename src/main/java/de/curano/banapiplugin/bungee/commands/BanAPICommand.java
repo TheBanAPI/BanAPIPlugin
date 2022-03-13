@@ -24,10 +24,10 @@ public class BanAPICommand extends Command {
                     Config.config.set("enabled", true);
                     Config.save();
                     if (!(sender instanceof ProxiedPlayer)) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     }
                     for (ProxiedPlayer player : BanAPIPlugin.instance().getProxy().getPlayers()) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     }
                     BanAPI.sendServerInfos(Config.config.getString("token"), BanAPIPlugin.instance().getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[0], Integer.parseInt(BanAPIPlugin.instance().getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[1]), Config.config.getBoolean("enabled", true));
                     return;
@@ -35,10 +35,10 @@ public class BanAPICommand extends Command {
                     Config.config.set("enabled", false);
                     Config.save();
                     if (!(sender instanceof ProxiedPlayer)) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     }
                     for (ProxiedPlayer player : BanAPIPlugin.instance().getProxy().getPlayers()) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     }
                     BanAPI.sendServerInfos(Config.config.getString("token"), BanAPIPlugin.instance().getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[0], Integer.parseInt(BanAPIPlugin.instance().getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[1]), Config.config.getBoolean("enabled", true));
                     return;
@@ -46,9 +46,9 @@ public class BanAPICommand extends Command {
         }
 
         if (Config.config.getBoolean("enabled", true)) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
         }
     }
 }

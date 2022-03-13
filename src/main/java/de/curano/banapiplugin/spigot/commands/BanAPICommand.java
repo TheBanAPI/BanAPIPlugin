@@ -23,10 +23,10 @@ public class BanAPICommand implements CommandExecutor {
                     Config.config.set("enabled", true);
                     Config.save();
                     if (sender instanceof ConsoleCommandSender) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     }
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     }
                     BanAPI.sendServerInfos(Config.config.getString("token"), Bukkit.getIp(), Bukkit.getPort(), Config.config.getBoolean("enabled"));
                     return true;
@@ -34,10 +34,10 @@ public class BanAPICommand implements CommandExecutor {
                     Config.config.set("enabled", false);
                     Config.save();
                     if (sender instanceof ConsoleCommandSender) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     }
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     }
                     BanAPI.sendServerInfos(Config.config.getString("token"), Bukkit.getIp(), Bukkit.getPort(), Config.config.getBoolean("enabled"));
                     return true;
@@ -45,9 +45,9 @@ public class BanAPICommand implements CommandExecutor {
         }
 
         if (Config.config.getBoolean("enabled", true)) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &aaktiviert&7."));
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI V1.0 &8┃ &7Das &eBanAPI-Plugin&7 ist &cdeaktiviert&7."));
         }
         return true;
     }
