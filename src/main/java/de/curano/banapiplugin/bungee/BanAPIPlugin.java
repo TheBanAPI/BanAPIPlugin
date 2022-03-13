@@ -21,12 +21,6 @@ public class BanAPIPlugin extends Plugin {
         return instance;
     }
 
-    private static void isBanned(UUID uuid, Consumer<Boolean> result) {
-        instance().getProxy().getScheduler().runAsync(instance(), () -> {
-           result.accept(BanAPI.isBanned(uuid));
-        });
-    }
-
     @Override
     public void onEnable() {
 
@@ -44,8 +38,8 @@ public class BanAPIPlugin extends Plugin {
             }
             Collection<ProxiedPlayer> onlinePlayers = BanAPIPlugin.instance().getProxy().getPlayers();
             for (ProxiedPlayer player : onlinePlayers) {
-                isBanned(player.getUniqueId(), result -> {
-                    if (result) {
+                BanAPI.isBanned(player.getUniqueId(), banned -> {
+                    if (banned) {
                         player.disconnect(new TextComponent("\n&4%lBanAPI\n\n&cDu wurdest gebannt!\n\nDu kannst auf dem &eBanAPI-Discord &7einen Entbannungsantrag stellung!\n".replace("&", "§")));
                     }
                 });

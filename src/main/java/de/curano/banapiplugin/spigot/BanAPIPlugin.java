@@ -29,13 +29,12 @@ public class BanAPIPlugin extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
-                    player.kickPlayer("BanAPI Ban");
-                    try {
-                        Thread.sleep(50L);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                if (Config.config.getBoolean("enabled", true)) {
+                    BanAPI.isBanned(player.getUniqueId(), banned -> {
+                        if (banned) {
+                            player.kickPlayer("BanAPI Ban");
+                        }
+                    });
                 }
             }
         }, 600, 600);
