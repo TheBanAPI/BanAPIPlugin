@@ -1,6 +1,5 @@
 package de.curano.banapiplugin.bungee.listener;
 
-import de.curano.banapiplugin.bungee.BanAPIPlugin;
 import de.curano.banapiplugin.bungee.data.Config;
 import de.curano.banapiplugin.utils.BanAPI;
 import net.md_5.bungee.api.ChatColor;
