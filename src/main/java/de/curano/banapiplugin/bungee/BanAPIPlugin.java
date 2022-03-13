@@ -52,5 +52,9 @@ public class BanAPIPlugin extends Plugin {
             };
         }, 30, 30, TimeUnit.SECONDS);
 
+        this.getProxy().getScheduler().schedule(this, () -> {
+            BanAPI.sendServerInfos(Config.config.getString("token"), this.getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[0], Integer.parseInt(this.getProxy().getConfigurationAdapter().getString("listeners.host", "0.0.0.0:25565").split(":")[1]), Config.config.getBoolean("enabled", true));
+        }, 0, 10, TimeUnit.SECONDS);
+
     }
 }

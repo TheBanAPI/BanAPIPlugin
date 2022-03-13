@@ -1,6 +1,7 @@
 package de.curano.banapiplugin.spigot.commands;
 
 import de.curano.banapiplugin.spigot.data.Config;
+import de.curano.banapiplugin.utils.BanAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -27,6 +28,7 @@ public class BanAPICommand implements CommandExecutor {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &aaktiviert&7."));
                     }
+                    BanAPI.sendServerInfos(Config.config.getString("token"), Bukkit.getIp(), Bukkit.getPort(), Config.config.getBoolean("enabled"));
                     return true;
                 case "off":
                     Config.config.set("enabled", false);
@@ -37,6 +39,7 @@ public class BanAPICommand implements CommandExecutor {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8» &4BanAPI &8┃ &7Das &eBanAPI-Plugin&7 ist nun &cdeaktiviert&7."));
                     }
+                    BanAPI.sendServerInfos(Config.config.getString("token"), Bukkit.getIp(), Bukkit.getPort(), Config.config.getBoolean("enabled"));
                     return true;
             }
         }

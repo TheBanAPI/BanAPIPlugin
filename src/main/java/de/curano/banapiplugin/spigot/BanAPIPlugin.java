@@ -40,5 +40,9 @@ public class BanAPIPlugin extends JavaPlugin {
             }
         }, 600, 600);
 
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
+            BanAPI.sendServerInfos(Config.config.getString("token"), Bukkit.getIp(), Bukkit.getPort(), Config.config.getBoolean("enabled"));
+        }, 0, 200);
+
     }
 }
