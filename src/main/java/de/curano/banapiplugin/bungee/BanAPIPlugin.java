@@ -8,7 +8,10 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 
+import java.util.Collection;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class BanAPIPlugin extends Plugin {
 
@@ -16,6 +19,12 @@ public class BanAPIPlugin extends Plugin {
 
     public static BanAPIPlugin instance() {
         return instance;
+    }
+
+    private static void isBanned(UUID uuid, Consumer<Boolean> result) {
+        instance().getProxy().getScheduler().runAsync(instance(), () -> {
+           result.accept(BanAPI.isBanned(uuid));
+        });
     }
 
     @Override
@@ -30,18 +39,17 @@ public class BanAPIPlugin extends Plugin {
         this.getProxy().getPluginManager().registerListener(this, new JoinListener());
 
         this.getProxy().getScheduler().schedule(this, () -> {
-            this.getProxy().getScheduler().runAsync(this, () -> {
-                for (ProxiedPlayer player : this.getProxy().getPlayers()) {
-                    if (Config.config.getBoolean("enabled", true) && BanAPI.isBanned(player.getUniqueId())) {
-                        player.disconnect(new TextComponent("BanAPI Ban"));
-                        try {
-                            Thread.sleep(50L);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+            if (!Config.config.getBoolean("enabled", true)) {
+                return;
+            }
+            Collection<ProxiedPlayer> onlinePlayers = BanAPIPlugin.instance().getProxy().getPlayers();
+            for (ProxiedPlayer player : onlinePlayers) {
+                isBanned(player.getUniqueId(), result -> {
+                    if (result) {
+                        player.disconnect(new TextComponent("\n&4%lBanAPI\n\n&cDu wurdest gebannt!\n\nDu kannst auf dem &eBanAPI-Discord &7einen Entbannungsantrag stellung!\n".replace("&", "§")));
                     }
-                }
-            });
+                });
+            };
         }, 30, 30, TimeUnit.SECONDS);
 
     }

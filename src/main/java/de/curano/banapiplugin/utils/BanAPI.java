@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public class BanAPI {
 
@@ -25,6 +26,8 @@ public class BanAPI {
                 result.append(line);
             }
             JSONObject json = new JSONObject(result.toString());
+            reader.close();
+            connection.disconnect();
             return json.getBoolean("banned");
         } catch (Exception e) {
             e.printStackTrace();
